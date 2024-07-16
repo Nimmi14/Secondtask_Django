@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="row mt-5">
+    <div class="col">
+        <h2 class='text-center alert alert-warning'>Blog Lists</h2>
+    
+    
+        <h6 class="fw-bold">published Blogs</h6>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Image</th>
+                    <th>Summary</th>
+                    <th>Action</th>
+                    
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in publish %}
+                    <tr>
+                        <td>{{ post.title }}</td>
+                        <td>
+                            {% if post.image %}
+                                <img src="{{ post.image.url }}" class="img-fluid rounded-circle" alt="Blog Image" style="height:50px;width:50px;">
+                            {% endif %}
+                        </td>
+                        <td>
+                            <div class="truncated-text" onclick="toggleFullText(this)">
+                                <span class="truncated-content">{{ post.summary|truncatechars:15 }}</span>
+                                <span class="full-content" style="display: none;">{{ post.summary }}</span>
+                            </div></td>
+                        <td><a href="{% url "delete" post.pk %}" class = "btn btn-danger">Delete</a></td>
+                        
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+        <a href="{% url "blog-form" %}" class= "btn btn-primary">new post</a>
+        <a href="{% url "blog-home" %}" class = 'btn btn-primary'>back to blog</a>
+    </div>
+</div>
+<script>
+    function toggleFullText(element) {
+        var row = element.closest('tr');
+        var truncatedContent = row.querySelector('.truncated-content');
+        var fullContent = row.querySelector('.full-content');
+
+        if (fullContent.style.display === 'none') {
+            truncatedContent.style.display = 'none';
+            fullContent.style.display = 'inline';
+        } else {
+            truncatedContent.style.display = 'inline';
+            fullContent.style.display = 'none';
+        }
+    }
+</script>
+{% endblock content %}

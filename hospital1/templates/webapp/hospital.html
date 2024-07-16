@@ -1,0 +1,19 @@
+<!-- templates/webapp/patientform.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Patient Sign Up{% endblock title %}
+
+{% block content %}
+<div class="container"> 
+    <h4 class = "text-center alert alert-warning">Hospital</h4> 
+    <div class="row">
+    <div class="text-center">
+    <a href="{% url "pform" %}" class = "btn btn-warning">patient form</a>
+    <a href="{% url "plogin" %}" class = "btn btn-warning">patient login</a> <br> <br>
+    <a href="{% url "dform" %}" class = "btn btn-warning" >doctor form</a>
+    <a href="{% url "dlogin" %}" class = "btn btn-warning">doctor login</a>
+</div>
+</div>  
+</div>
+{% endblock content %}

@@ -1,0 +1,82 @@
+<!-- doctorform.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="col-sm-6 mx-auto">
+    <h2 class = "text-center alert alert-info">Doctor Signup</h2>
+    <form method="post" enctype="multipart/form-data" class="my-form">
+      {% csrf_token %}
+      
+      <!-- Username -->
+      <div class="form-group">
+          {{ form.username.label_tag }}
+          {{ form.username }}
+      </div>
+  
+      <!-- Password1 -->
+      <div class="form-group">
+          {{ form.password1.label_tag }}
+          {{ form.password1 }}
+      </div>
+  
+      <!-- Password2 -->
+      <div class="form-group">
+          {{ form.password2.label_tag }}
+          {{ form.password2 }}
+      </div>
+  
+      <!-- First Name -->
+      <div class="form-group">
+          {{ form.first_name.label_tag }}
+          {{ form.first_name }}
+      </div>
+  
+      <!-- Last Name -->
+      <div class="form-group">
+          {{ form.last_name.label_tag }}
+          {{ form.last_name }}
+      </div>
+      <!-- Email -->
+      <div class="form-group">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+    </div>
+  
+      <!-- Line1 -->
+      <div class="form-group">
+          {{ form.line1.label_tag }}
+          {{ form.line1 }}
+      </div>
+  
+      <!-- State -->
+      <div class="form-group">
+          {{ form.state.label_tag }}
+          {{ form.state }}
+      </div>
+  
+      <!-- Pincode -->
+      <div class="form-group">
+          {{ form.pincode.label_tag }}
+          {{ form.pincode }}
+      </div>
+  
+      <!-- Profile -->
+      <div class="form-group">
+          {{ form.profile.label_tag }}
+          {{ form.profile }}
+      </div>
+  
+      <!-- Experience -->
+      <div class="form-group">
+          {{ form.experience.label_tag }}
+          {{ form.experience }}
+      </div>
+  
+      
+      <br>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+  </div>
+{% endblock %}

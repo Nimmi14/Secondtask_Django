@@ -1,0 +1,85 @@
+<!-- templates/webapp/patientform.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Patient Sign Up{% endblock title %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-5 mx-auto">
+        <h3 class = 'text-center alert alert-info'>Patient Register Form</h3>
+<form method="post" action="" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {% if messages %}
+        {% for message in messages %}
+            <small class = 'text-center text-danger'>{{message}}</small>
+        {% endfor %}
+    {% endif %}
+    
+    {{ form.non_field_errors }}
+    
+    <div class="form-group">
+        {{ form.username.label_tag }}
+        {{ form.username}}
+    </div>
+     <!-- Password1 -->
+    <div class="form-group">
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+    </div>
+    
+    <!-- Password2 -->
+    <div class="form-group">
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+    </div>
+    <!-- First Name -->
+    <div class="form-group">
+        {{ form.first_name.label_tag }}
+        {{ form.first_name }}
+    </div>
+    
+    <!-- Last Name -->
+    <div class="form-group">
+        {{ form.last_name.label_tag }}
+        {{ form.last_name }}
+    </div>
+    
+    <!-- Line 1 -->
+    <div class="form-group">
+        {{ form.line1.label_tag }}
+        {{ form.line1 }}
+    </div>
+    
+    <!-- State -->
+    <div class="form-group">
+        {{ form.state.label_tag }}
+        {{ form.state }}
+    </div>
+    
+    <!-- Pincode -->
+    <div class="form-group">
+        {{ form.pincode.label_tag }}
+        {{ form.pincode }}
+    </div>
+    
+    <!-- Profile -->
+    <div class="form-group">
+        {{ form.profile.label_tag }}
+        {{ form.profile }}
+    </div>
+    
+    <!-- Email -->
+    <div class="form-group">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+    </div>
+    
+   
+    
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+</div>
+{% endblock content %}

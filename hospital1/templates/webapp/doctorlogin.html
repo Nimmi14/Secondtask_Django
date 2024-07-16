@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Patient Login{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2 class = "text-center alert alert-info">Doctor Login</h2>
+   <form method="POST">
+            {% if messages %}
+                    {% for message in messages %}
+                    <small>{{message}}</small>
+                    {% endfor %}
+                {% endif %}
+        {% csrf_token %}
+      
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary">Login</button>
+        <a href="{% url "home" %}" class = "btn btn-success">HOME</a>
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <strong>Error:</strong> Please correct the following errors.
+                <ul>
+                    {% for error in form.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </form> 
+</div>
+{% endblock content %}

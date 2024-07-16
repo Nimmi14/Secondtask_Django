@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% load static %}
+{% block content %}
+
+<h1 class="text-center alert alert-info">Doctor Dashboard</h1>
+
+<h6 class="fw-bold" align="center">Welcome, {{ user.username }}!</h6>
+{% if user.is_authenticated %}
+    {% if user.doctor.profile %}
+        <div class="profile-image-container" align='center'>
+            <p><img src="{{ user.doctor.profile.url }}" class='img-fluid rounded-circle' alt="Profile Image"></p>
+        </div>
+    {% else %}
+        <p>No profile image available.</p>
+    {% endif %}
+
+    <p><strong>First Name: </strong>{{ user.first_name }}</p>
+    <p><strong>Last Name: </strong>{{ user.last_name }}</p>
+    <p><strong>Email: </strong>{{ user.email }}</p>
+    {% if user.is_doctor %}
+        <p><strong>Experience: </strong>{{ user.doctor.experience }}</p>
+    {% endif %}
+    <p><strong>Address: </strong>{{ user.doctor.line1 }}, {{ user.doctor.state }}, {{ user.doctor.pincode }}</p>
+{% else %}
+    <p>You are not logged in.</p>
+{% endif %}
+
+<div class="row">
+    <div class="col-sm-6">
+    <a href="{% url "home" %}" class = "btn btn-primary">BacktoHome</a> 
+    <a href="{% url "logout" %}" class = "btn btn-primary">Logout</a> 
+    </div>
+    
+    <div class="col-sm-6 pe-4 d-flex justify-content-end">
+            <a href="{% url "blog-home" %}" class = "btn btn-primary" >BLOG</a> 
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block content %}
+
+<h1 class="text-center alert alert-info">Patient Dashboard</h1>
+
+
+
+
+<h6 class="fw-bold" align="center">Welcome, {{ user.username }}!</h6>
+{% if user.is_authenticated %}
+
+    {% if user.patient.profile %}
+    <div class="profile-image-container" align='center'>
+        <p><img src="{{ user.patient.profile.url }} " class= 'img-fluid rounded-circle' alt="Profile Image"></p></div>
+    {% else %}
+        <p>No profile image available.</p>
+    {% endif %}
+    <p ><strong>First Name: </strong>{{ user.first_name }}</p>
+    <p ><strong>Last Name: </strong>{{ user.last_name }}</p>
+    <p><strong>Email: </strong>{{ user.email }}</p>
+    <p><strong>Address: </strong>{{ user.patient.line1 }}, {{user.patient.state}}, {{user.patient.pincode}}</p>
+    
+{% else %}
+    <p>You are not logged in.</p>
+{% endif %}
+
+<hr>
+
+<div class="row">
+<div class="col-sm-6">
+<a href="{% url "home" %}" class = "btn btn-primary">BacktoHome</a> 
+<a href="{% url "logout" %}" class = "btn btn-primary">Logout</a> 
+</div>
+
+<div class="col-sm-6 pe-4 d-flex justify-content-end">
+        <a href="{% url "dp-posts" %}" class = "btn btn-primary" >Blog Posts</a> 
+    </div>
+</div>
+
+{% endblock content %}

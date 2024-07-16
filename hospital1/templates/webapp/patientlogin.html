@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Patient Login{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Patient Login</h2>
+    <form method="POST">
+        {% if messages %}
+        {% for message in messages %}
+            <small class = 'text-center text-danger'>{{message}}</small>
+        {% endfor %}
+    {% endif %}
+    
+        {% csrf_token %}
+        
+        {{form.as_p}}
+
+        <button type="submit" class="btn btn-primary">Login</button>
+        <a href="{% url "home" %}" class = "btn btn-success">HOME</a>
+    </form>
+</div>
+{% endblock content %}
